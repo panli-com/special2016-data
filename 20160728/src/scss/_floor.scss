@@ -1,0 +1,80 @@
+.floor1 {
+    padding-bottom: 46px;
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+    .title {
+        height: 180px;
+        padding-bottom: 20px;
+    }
+    .fl-main {
+        margin-bottom: 26px;
+        height: 506px;
+        .mydaijinjuan {
+            position: absolute;
+            bottom: 0;
+            right: 90px;
+            display: block;
+            width: 140px;
+            height: 30px;
+            // background: #fff;
+            opacity: .4;
+        }
+    }
+    .btn-wrap {
+        .btn1 {
+            display: inline-block;
+            width: 365px;
+            height: 71px;
+            background: url(../imgs/f1-btn1.png) no-repeat center center;
+            margin-right: 24px;
+        }
+        .btn2 {
+            display: inline-block;
+            width: 445px;
+            height: 71px;
+            background: url(../imgs/f1-btn2.png) no-repeat center center;
+        }
+    }
+}
+
+.floor2 {
+    padding-top: 45px;
+    padding-bottom: 46px;
+    .title {
+        height: 112px;
+        padding-bottom: 40px;
+    }
+    .fl-main {
+        height: 646px;
+    }
+}
+
+.floor3 {
+    padding-top: 45px;
+    padding-bottom: 46px;
+    .title {
+        height: 90px;
+        padding-bottom: 40px;
+    }
+    .fl-main {
+        height: 471px;
+    }
+}
+
+.floor4 {
+    padding-top: 45px;
+    padding-bottom: 46px;
+    .title {
+        height: 101px;
+        padding-bottom: 40px;
+    }
+    .fl-main {
+        height: 356px;
+    }
+    .fl-footer {
+        padding-top: 30px;
+        text-align: right;
+    }
+}

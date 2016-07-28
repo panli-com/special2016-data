@@ -1,0 +1,38 @@
+.porela {
+    position: relative;
+}
+
+.bg-bule {
+    background: #26afe6;
+}
+
+.bg-yello {
+    background: #ffd236;
+}
+
+.bg-pink {
+    background: #f34b6c;
+}
+
+.bg-green {
+    background: #09b964;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    zoom: 1;
+}

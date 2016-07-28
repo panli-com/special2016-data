@@ -1,0 +1,134 @@
+.sp-top-bang {
+    width: 390px;
+    height: 618px;
+    background: #fe7b33;
+    padding-top: 28px;
+    .top-title {
+        height: 55px;
+        background: url(../imgs/top-title.png) no-repeat center center;
+    }
+}
+
+.sp-top-bang-info {
+    width: 610px;
+    height: 646px;
+    background: #fff;
+}
+
+.top-list-wrap {
+    padding: 16px 22px 0 22px;
+    li {
+        border-top: 1px solid #fe8f51;
+        color: #fff;
+        height: 48px;
+        line-height: 48px;
+        position: relative;
+        span {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .sp1 {
+            width: 80px;
+        }
+        .sp2 {
+            width: 132px;
+        }
+        &.li,
+        &.li1,
+        &.li2,
+        &.li3 {
+            span {
+                color: #ffef67;
+            }
+        }
+        &.li0 {
+            border-top: none;
+            span {
+                font-size: 22px;
+            }
+        }
+        &.li1 {
+            border-top: 2px solid #ffef67;
+            .sp1 {
+                height: 48px;
+                background: url(../imgs/1.png) no-repeat center center;
+            }
+        }
+        &.li2 {
+            .sp1 {
+                height: 48px;
+                background: url(../imgs/2.png) no-repeat center center;
+            }
+        }
+        &.li3 {
+            .sp1 {
+                height: 48px;
+                background: url(../imgs/3.png) no-repeat center center;
+            }
+        }
+    }
+}
+
+.text-info-wrap {
+    padding: 27px 20px 0 33px;
+    .red {
+        color: #fa431b;
+    }
+    .text1 {
+        font-size: 18px;
+    }
+    .text2 {
+        padding-top: 10px;
+        margin-bottom: 30px;
+        .title-t {
+            display: block;
+            font-size: 18px;
+            padding-bottom: 5px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}
+
+.user-info-wrap {
+    height: 154px;
+    background: #fff0bd;
+    border-radius: 15px;
+    .bg-bag {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin-top: -40px;
+        width: 182px;
+        height: 79px;
+        background: url(../imgs/bag.png) no-repeat center center;
+    }
+    .user-top-msg {
+        padding: 26px;
+        .hello-use {
+            padding-bottom: 8px;
+        }
+        .p1 {
+            text-indent: 28px;
+        }
+    }
+}
+
+.activ-desc {
+    padding-top: 30px;
+    padding-right: 10px;
+    .red-title {
+        height: 23px;
+        background: url(../imgs/red-title.png) no-repeat;
+        margin-bottom: 10px;
+    }
+    ol {
+        padding-left: 18px;
+    }
+    ol,
+    li {
+        list-style-type: decimal;
+    }
+}
