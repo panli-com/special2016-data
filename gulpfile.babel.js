@@ -4,18 +4,18 @@
  * @ zanjser@163.com
  * 2016年07月28日13:39:38
  */
-import pkg          from './package.json';
-import gulp         from 'gulp';
-import sass         from 'gulp-sass';
-import concat       from 'gulp-concat';
-import minifycss    from 'gulp-minify-css';
-import uglify       from 'gulp-uglify';
-import rename       from 'gulp-rename';
-import notify       from 'gulp-notify';
-import imagemin     from 'gulp-imagemin';
-import header       from 'gulp-header';
+import pkg from './package.json';
+import gulp from 'gulp';
+import sass from 'gulp-sass';
+import concat from 'gulp-concat';
+import minifycss from 'gulp-minify-css';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import notify from 'gulp-notify';
+import imagemin from 'gulp-imagemin';
+import header from 'gulp-header';
 import autoprefixer from 'gulp-autoprefixer';
-import px2rem       from 'gulp-px3rem';
+import px2rem from 'gulp-pxrem';
 
 
 
@@ -44,7 +44,13 @@ gulp.task('sass', () => gulp.src(`./${day}/src/scss/main.scss`)
         browsers: ['last 2 versions'],
         cascade: false
     }))
-    // .pipe(px2rem())
+    // .pipe(px2rem({
+    //     baseDpr: 2,             // base device pixel ratio (default: 2)
+    //     threeVersion: false,    // whether to generate @1x, @2x and @3x version (default: false)
+    //     remVersion: true,       // whether to generate rem version (default: true)
+    //     remUnit: 72,            // rem unit value (default: 75)
+    //     remPrecision: 6    
+    // }))
     .pipe(rename(mincss))
     .pipe(gulp.dest(`./${day}/.tmp/`))
     .pipe(minifycss())
