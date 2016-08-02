@@ -51,7 +51,7 @@ function userLoginInfo(userinfo) {
         msg = '截止当前，您的消费金额为<span class="red">' + price + '</span>元.';
     }
 
- 
+
     var stc = '' +
         '<div class="user-top-msg-1" >' +
         '<div class="hello-use">亲爱的 <span class="red">' + userinfo.name + '</span>,</div>' +

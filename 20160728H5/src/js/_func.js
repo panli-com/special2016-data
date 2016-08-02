@@ -48,7 +48,7 @@ function userLoginInfo(userinfo) {
 
     var msg = '您还未购买任何商品，<a href="' + userinfo.url + '" class="red">赶紧去血拼~</a>';
     if (price > 0) {
-        msg = '截止当前，您的消费金额为<span class="red">' + price + '元</span>.'; 
+        msg = '截止当前，您的消费金额为<span class="red">' + price + '元</span>.';
     }
 
 

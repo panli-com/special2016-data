@@ -11,7 +11,8 @@
         border-radius: 10px;
         padding-bottom: 0;
         li {
-            border-top: 1px solid #e5e5e5; /*no*/
+            border-top: 1px solid #e5e5e5;
+            /*no*/
             height: 56px;
             line-height: 56px;
             color: #555;
@@ -38,7 +39,7 @@
             &.li1 {
                 color: #f95432;
                 border-color: #f95432;
-                border-width: 2px; 
+                border-width: 2px;
                 .sp1 {
                     background: url(../imgs/1.png) no-repeat center center;
                     background-size: 44px 53px;
