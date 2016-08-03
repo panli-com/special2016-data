@@ -780,3 +780,9 @@ li {
   font-size: 0.333333rem;
   line-height: 0.583333rem;
 }
+
+.footer-bg {
+  height: 4.444444rem;
+  background: url(../imgs/readme-all.png) no-repeat center center;
+  background-size: 9.236111rem 4.444444rem;
+}

@@ -607,3 +607,8 @@ li {
   .footer li {
     font-size: 24px;
     line-height: 42px; }
+
+.footer-bg {
+  height: 320px;
+  background: url(../imgs/readme-all.png) no-repeat center center;
+  background-size: 665px 320px; }

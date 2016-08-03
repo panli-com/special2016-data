@@ -59,6 +59,24 @@
     margin-top: -277px;
     background: url("../imgs/banner2.png") no-repeat center center; }
 
+.sp-nav-wp {
+  position: relative;
+  width: 940px; }
+  .sp-nav-wp a {
+    display: inline-block;
+    width: 146px;
+    height: 146px;
+    opacity: .3;
+    margin-left: 34px; }
+    .sp-nav-wp a.golink2 {
+      margin-left: 22px; }
+    .sp-nav-wp a.golink3 {
+      margin-left: 22px; }
+    .sp-nav-wp a.golink4 {
+      margin-left: 22px; }
+    .sp-nav-wp a.golink5 {
+      margin-left: 20px; }
+
 .floor1 {
   padding-bottom: 46px; }
   .floor1 img {
@@ -168,7 +186,8 @@
       background: url(../imgs/3.png) no-repeat center center; }
 
 .text-info-wrap {
-  padding: 27px 20px 0 33px; }
+  padding: 27px 20px 0 33px;
+  color: #555; }
   .text-info-wrap .red {
     color: #fa431b; }
   .text-info-wrap .text1 {
@@ -182,7 +201,8 @@
       padding-bottom: 5px; }
     .text-info-wrap .text2 p {
       font-size: 16px;
-      line-height: 24px; }
+      line-height: 24px;
+      color: #555; }
 
 .user-info-wrap {
   height: 154px;
@@ -197,7 +217,8 @@
     height: 79px;
     background: url(../imgs/bag.png) no-repeat center center; }
   .user-info-wrap .user-top-msg {
-    padding: 26px; }
+    padding: 26px;
+    color: #555; }
     .user-info-wrap .user-top-msg .hello-use {
       padding-bottom: 8px; }
     .user-info-wrap .user-top-msg .p1 {
@@ -214,4 +235,5 @@
     padding-left: 18px; }
   .activ-desc ol,
   .activ-desc li {
+    color: #555;
     list-style-type: decimal; }

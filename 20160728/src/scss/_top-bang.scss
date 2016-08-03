@@ -71,6 +71,7 @@
 
 .text-info-wrap {
     padding: 27px 20px 0 33px;
+    color: #555;
     .red {
         color: #fa431b;
     }
@@ -88,6 +89,7 @@
         p {
             font-size: 16px;
             line-height: 24px;
+            color: #555;
         }
     }
 }
@@ -107,6 +109,7 @@
     }
     .user-top-msg {
         padding: 26px;
+        color: #555;
         .hello-use {
             padding-bottom: 8px;
         }
@@ -129,6 +132,7 @@
     }
     ol,
     li {
+        color: #555;
         list-style-type: decimal;
     }
 }

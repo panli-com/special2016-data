@@ -233,4 +233,17 @@ PD(function() {
     });
 
 
+    PD(".sp-nav-wp").on("click", ".golink", function() {
+        var _t = PD(this);
+        _f = _t.index() + 1;
+        console.log(_f);
+        var a = PD("#floor" + _f).offset().top;
+
+        PD("body,html").animate({
+            scrollTop: a - 80
+        }, 300)
+
+
+    });
+
 })

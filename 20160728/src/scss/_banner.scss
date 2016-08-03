@@ -10,3 +10,28 @@
         background: url("../imgs/banner2.png") no-repeat center center;
     }
 }
+
+.sp-nav-wp {
+    position: relative;
+    width: 940px;
+    // background: red;
+    a {
+        display: inline-block;
+        width: 146px;
+        height: 146px;
+        opacity: .3;
+        margin-left: 34px;
+        &.golink2 {
+            margin-left: 22px;
+        }
+        &.golink3 {
+            margin-left: 22px;
+        }
+        &.golink4 {
+            margin-left: 22px;
+        }
+        &.golink5 {
+            margin-left: 20px;
+        }
+    }
+}
