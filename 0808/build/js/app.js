@@ -1,0 +1,2 @@
+/*! 调查问卷 v0.0.1 | (c) Mon Aug 08 2016 17:12:48 GMT+0800 (CST) https://nnn.li | Julian zanjser@163.com */
+PD(function(){PD("input[type=checkbox]").click(function(){var e=PD(this),t=e.attr("name");console.log(t),e.attr("disabled","disabled");PD("input[name='"+t+"']:checked").length>=4&&PD("input[name='"+t+"']:checked").attr("disabled","disabled")})});

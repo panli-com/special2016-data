@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        var checkedFlag = 0;
+        var checkMax = 2;
+
+        function checkbox(checkbox) {
+            var obj = document.getElementsByName("checkbox");
+            if (checkbox.checked && checkedFlag <= checkMax - 1) {
+                checkedFlag++;
+                if (checkedFlag == checkMax) {
+                    for (var i = 0; i < obj.length; i++) {
+                        if (!obj[i].checked) obj[i].disabled = true;
+                    }
+                }
+            } else if (!checkbox.checked) {
+                for (var j = 0; j < obj.length; j++) {
+                    if (!obj[j].checked) obj[j].disabled = false;
+                }
+                checkedFlag--;
+            }
+        }
+
+        function init() {
+            var obj = document.getElementsByName("checkbox");
+            for (var i = 0; i < obj.length; i++) {
+                if (obj[i].checked || obj[i].disabled) {
+                    obj[i].checked = false;
+                    obj[i].disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="init();">
+    <td>多选 : 最多可选 2 项 </td><br>
+    <td>.net <input type="checkbox" value="1" name="checkbox" onclick="checkbox(this);" /></td>
+    <td>java <input type="checkbox" value="2" name="checkbox" onclick="checkbox(this);" /></td>
+    <td>php <input type="checkbox" value="3" name="checkbox" onclick="checkbox(this);" /></td>
+    <td>asp <input type="checkbox" value="4" name="checkbox" onclick="checkbox(this);" /></td>
+    <td>c# <input type="checkbox" value="5" name="checkbox" onclick="checkbox(this);" /></td>
+    <td>c++ <input type="checkbox" value="6" name="checkbox" onclick="checkbox(this);" /></td>
+</body>
+
+</html>

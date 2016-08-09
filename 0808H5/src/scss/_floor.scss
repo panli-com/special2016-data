@@ -1,0 +1,51 @@
+.main-content {
+    padding: 0 30px;
+    color: #FFF;
+}
+
+@media ( max-width: 375px) {
+    .text-main1 {
+        li {
+            font-size: 20px;
+            padding: 0;
+            list-style-type: none;
+            display: block;
+            &:nth-child(3),
+            &:nth-child(1) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.back_center {
+    dd {
+        margin: 0;
+        padding: 0;
+    }
+    h5 {
+        margin: 20px 0;
+        background: #3e9bcf;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    table,tbody,tr,td {
+        display: block;
+    }
+    .wrongtip {
+        color: #fff441;
+    }
+}
+
+.question-list {
+    .title {
+        margin: 20px 0;
+        background: #3e9bcf;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    li {
+        position: relative;
+        margin-bottom: 10px;
+    }
+}

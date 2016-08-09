@@ -1,0 +1,89 @@
+@keyframes hover-color {
+    from {
+        border-color: $jui-border-color;
+    }
+    to {
+        border-color: #fff;
+    }
+}
+
+.jui-radio,
+.jui-checkbox {
+    position: absolute;
+    display: none;
+}
+
+.jui-radio[disabled],
+.jui-checkbox[disabled] {
+    cursor: not-allowed;
+}
+
+.jui-radio + label,
+.jui-checkbox + label {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    /*no*/
+    cursor: pointer;
+    vertical-align: middle;
+    line-height: 20px;
+    
+    /*no*/
+    &:hover {
+        &:before {
+            animation-duration: 0.4s;
+            animation-fill-mode: both;
+            animation-name: hover-color;
+        }
+    }
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: $box-size;
+        /*no*/
+        height: $box-size;
+        /*no*/
+        content: '';
+        border: 4px solid #3986b0;
+        /*no*/
+    }
+    &:after {
+        position: absolute;
+        display: block;
+        content: '';
+    }
+}
+
+// .jui-radio[disabled] + label,
+// .jui-checkbox[disabled] + label {
+//     cursor: not-allowed;
+//     color: $disabled-color;
+//     &:hover,
+//     &:before,
+//     &:after {
+//         cursor: not-allowed;
+//     }
+//     &:hover {
+//         &:before {
+//             border: 2px solid #ccc;
+//             animation-name: none;
+//         }
+//     }
+//     &:before {
+//         border-color: #ccc;
+//     }
+//     &:after {
+//         background: #ccc;
+//     }
+// }
+.jui-radio:checked + label,
+.jui-checkbox:checked + label {
+    &:before {
+        animation-name: none;
+    }
+    &:after {
+        display: block;
+    }
+}

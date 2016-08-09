@@ -1,0 +1,64 @@
+.aoyun-top-wp {
+    .title {
+        display: block;
+        height: 41px;
+        background: url(../imgs/aoyun-title.png) no-repeat center center;
+        background-size: 610px 41px;
+        margin-bottom: 20px;
+    }
+    .top-list-u {
+        background: #FFF;
+        border-radius: 10px;
+        padding-bottom: 0;
+        li {
+            border-top: 1px solid #e5e5e5;
+            /*no*/
+            height: 56px;
+            line-height: 56px;
+            color: #555;
+            span {
+                font-size: 24px;
+                display: inline-block;
+            }
+            .sp1 {
+                width: 84px;
+            }
+            .sp2 {
+                width: 260px;
+            }
+            .sp3 {
+                width: 210px;
+            }
+            &.li0 {
+                color: #f95432;
+                border: none;
+                span {
+                    font-size: 30px;
+                }
+            }
+            &.li1 {
+                color: #f95432;
+                border-color: #f95432;
+                border-width: 2px;
+                .sp1 {
+                    background: url(../imgs/1.png) no-repeat center center;
+                    background-size: 44px 53px;
+                }
+            }
+            &.li2 {
+                color: #f95432;
+                .sp1 {
+                    background: url(../imgs/2.png) no-repeat center center;
+                    background-size: 44px 53px;
+                }
+            }
+            &.li3 {
+                color: #f95432;
+                .sp1 {
+                    background: url(../imgs/3.png) no-repeat center center;
+                    background-size: 44px 53px;
+                }
+            }
+        }
+    }
+}

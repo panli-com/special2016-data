@@ -1,0 +1,50 @@
+.jui-checkbox + label {
+    &:before {
+        width: 18px;
+        /*no*/
+        height: 18px;
+        /*no*/
+        border-radius: 3px;
+        /*no*/
+        border: #3986b0;
+        background: #3986b0;
+    }
+    &:after {
+        top: 2px;
+        /*no*/
+        left: 5px;
+        /*no*/
+        box-sizing: border-box;
+        width: 6px;
+        /*no*/
+        height: 12px;
+        /*no*/
+        transform: rotate(45deg);
+        border-width: 3px;
+        /*no*/
+        border-style: solid;
+        border-color: #3986b0;
+        border-top: 0;
+        border-left: 0;
+    }
+}
+
+.jui-checkbox:checked + label {
+    &:before {
+        border: #f35d5d;
+        background: #f35d5d;
+    }
+    &:after {
+        border-color: #fff;
+    }
+}
+
+.jui-checkbox:checked[disabled] + label {
+    &:before {
+        border: $disabled-checked-color;
+        background: $disabled-checked-color;
+    }
+    &:after {
+        border-color: #fff;
+    }
+}

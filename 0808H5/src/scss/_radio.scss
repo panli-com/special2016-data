@@ -1,0 +1,37 @@
+.jui-radio + label {
+    &:before {
+        border-radius: 50%;
+    }
+    &:after {
+        top: $box-border;
+        /*no*/
+        left: $box-border;
+        /*no*/
+        width: $box-size;
+        /*no*/
+        height: $box-size;
+        /*no*/
+        border-radius: 50%;
+        background: #3986b0;
+    }
+}
+
+.jui-radio:checked + label {
+    &:before {
+        border: $box-border solid #fff;
+        /*no*/
+    }
+    &:after {
+        background: #f35d5d;
+    }
+}
+
+.jui-radio:checked[disabled] + label {
+    &:before {
+        border: $box-border solid $disabled-checked-color;
+        /*no*/
+    }
+    &:after {
+        background: $disabled-checked-color;
+    }
+}

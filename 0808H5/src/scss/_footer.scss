@@ -1,0 +1,27 @@
+.footer {
+    color: #FFF;
+    .title {
+        height: 27px;
+        background: url(../imgs/readme.png) no-repeat center left;
+        background-size: 124px 27px;
+    }
+    ol,
+    li {
+        list-style-type: decimal;
+    }
+    ol {
+        padding-top: 10px;
+        margin-left: 30px;
+    }
+    li {
+        font-size: 24px;
+        line-height: 42px;
+    }
+}
+
+.footer-bg {
+    // width: 665px;
+    height: 320px;
+    background: url(../imgs/readme-all.png) no-repeat center center;
+    background-size: 665px 320px;
+}
