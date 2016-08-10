@@ -26,7 +26,7 @@ function formVerif() {
 function noCheckEl(el) {
 
     PD("body,html").animate({
-        scrollTop: el.prev().offset().top
+        scrollTop: el.prev().offset().top - 90
     }, 300)
 }
 

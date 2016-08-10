@@ -58,7 +58,6 @@ function formVerifText() {
 
 function formAll() {
 
-
     if (formVerif()) {
 
         if (formVerifText()) {
@@ -67,8 +66,6 @@ function formAll() {
         }
 
     }
-
-
 
     return false;
 }
