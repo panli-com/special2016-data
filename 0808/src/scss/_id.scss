@@ -78,11 +78,13 @@ area {
 
 #frame {
     width: 100%;
+    min-width: 1200px;
     background-color: #a7ddfb;
 }
 
 .Berserk_banner {
     height: 698px;
+    min-width: 1200px;
 }
 
 .banner1 {
@@ -161,6 +163,14 @@ label {
     height: 36px;
     line-height: 36px;
     background-color: #ffedda;
+}
+
+.isshow-que {
+    // display: none;
+}
+
+.isshow-que-hide {
+    display: none!important;
 }
 
 .input_text {

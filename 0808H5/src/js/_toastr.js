@@ -1,79 +1,5 @@
-function formVerif() {
-
-    var tb = PD(".m_table:not(.isshow-que-hide)");
-
-    for (var i = 0; i < tb.length; i++) {
-        var _ttb = tb.eq(i);
-        var inp = _ttb.find(":radio,:checkbox");
-        var inpLens = inp.length;
-
-
-        if (inpLens > 0) {
-
-            if (_ttb.find(':checked').length < 1) {
-                noCheckEl(_ttb);
-                toastr.error('填写完整才有机会哦', '发现您还没选择哦!');
-                return false;
-
-            }
-
-        }
-
-    }
-    return true;
-}
-
-function noCheckEl(el) {
-
-    PD("body,html").animate({
-        scrollTop: el.prev().offset().top
-    }, 300)
-}
-
-
-function formVerifText() {
-
-    var tx = PD(".j-readonly");
-
-
-    for (var i = 0; i < tx.length; i++) {
-
-        var _ttx = tx.eq(i);
-
-        var _v = _ttx.val().trim();
-
-        if (_v.length < 2) {
-            _ttx.focus();
-            noCheckEl(_ttx.parents("table"))
-            toastr.error('填写完整才有机会哦', '好像还没有输入!')
-            return false
-        }
-
-
-    }
-
-    return true;
-
-}
-
-function formAll() {
-
-
-    if (formVerif()) {
-
-        if (formVerifText()) {
-
-            return true;
-        }
-
-    }
-
-
-
-    return false;
-}
 (function(define) {
-    define(['jquery'], function($) {
+    define(['PD'], function($) {
         return (function() {
             var $container;
             var listener;
@@ -240,7 +166,7 @@ function formAll() {
                     },
                     iconClass: 'toast-info',
                     positionClass: 'toast-top-right',
-                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    timeOut: 3000, // Set timeOut and extendedTimeOut to 0 to make it sticky
                     titleClass: 'toast-title',
                     messageClass: 'toast-message',
                     escapeHtml: false,
@@ -257,7 +183,8 @@ function formAll() {
 
             function publish(args) {
                 if (!listener) {
-                    return; }
+                    return;
+                }
                 listener(args);
             }
 
@@ -271,7 +198,8 @@ function formAll() {
                 }
 
                 if (shouldExit(options, map)) {
-                    return; }
+                    return;
+                }
 
                 toastId++;
 
@@ -528,46 +456,8 @@ function formAll() {
     });
 }(typeof define === 'function' && define.amd ? define : function(deps, factory) {
     if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('jquery'));
+        module.exports = factory(require('PD'));
     } else {
-        window.toastr = factory(window.jQuery);
+        window.toastr = factory(window.PD);
     }
 }));
-PD(function() {
-
-    PD("#tbl_question_6").on("click", function() {
-
-        if (document.getElementById("option_6_512").checked) {
-            PD(".isshow-que").removeClass("isshow-que-hide");
-        } else {
-
-            PD(".isshow-que").addClass("isshow-que-hide");
-        }
-
-    });
-
-
-    PD(".many-check").on("click", function() {
-        var _t = PD(this),
-            _max = _t.attr("max") - 0;
-
-        _t.find('[type="checkbox"]').attr('disabled', true);
-        if (_t.find('[type="checkbox"]:checked').length >= _max) {
-            _t.find('[type="checkbox"]:checked').attr('disabled', false);
-        } else {
-            _t.find('[type="checkbox"]').attr('disabled', false);
-        }
-    });
-
-    PD(".startbtn a").on("click", function() {
-
-        if (formAll()) {
-            PD("#form-que").submit()
-        }
-
-
-
-    });
-
-
-})

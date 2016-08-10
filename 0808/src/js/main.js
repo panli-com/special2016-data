@@ -1,37 +1,38 @@
 PD(function() {
 
-    PD('input[type=checkbox]').click(function() {
+    PD("#tbl_question_6").on("click", function() {
 
-        var _t = PD(this);
-        var _tNamt = _t.attr("name");
-        console.log(_tNamt);
-        _t.attr('disabled', 'disabled');
-        var checkStc = "input[name='" + _tNamt + "']:checked";
-        if (PD("input[name='" + _tNamt + "']:checked").length >= 4) {
+        if (document.getElementById("option_6_512").checked) {
+            PD(".isshow-que").removeClass("isshow-que-hide");
+        } else {
 
-            PD("input[name='" + _tNamt + "']:checked").attr('disabled', 'disabled');
+            PD(".isshow-que").addClass("isshow-que-hide");
         }
+
     });
 
 
+    PD(".many-check").on("click", function() {
+        var _t = PD(this),
+            _max = _t.attr("max") - 0;
+
+        _t.find('[type="checkbox"]').attr('disabled', true);
+        if (_t.find('[type="checkbox"]:checked').length >= _max) {
+            _t.find('[type="checkbox"]:checked').attr('disabled', false);
+        } else {
+            _t.find('[type="checkbox"]').attr('disabled', false);
+        }
+    });
+
+    PD(".startbtn a").on("click", function() {
+
+        if (formAll()) {
+            PD("#form-que").submit()
+        }
+
+
+
+    });
 
 
 })
-
-
-// PD(function() {
-
-//     PD('input[type=checkbox]').click(function() {
-//         var _t = PD(this);
-//         var _tNamt = _t.attr("name");
-//         PD(this).attr('disabled', 'disabled');
-//         if (PD("" + _tNamt + ":checked").length >= 4) {
-
-//             PD(this).attr('disabled', 'disabled');
-//         }
-//     });
-
-
-
-
-// })
