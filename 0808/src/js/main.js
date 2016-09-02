@@ -24,13 +24,6 @@ PD(function() {
         }
     });
 
-    PD(".startbtn a").on("click", function() {
-
-        if (formAll()) {
-            PD("form").submit();
-        }
-
-    });
 
 
 })

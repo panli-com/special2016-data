@@ -311,5 +311,16 @@
         </section>
     </div>
 </body>
+<script>
+   PD(function() {
+
+            PD(".startbtn a").on("click", function() {
+
+        if (formAll()) {
+            PD("form").submit()
+        }
+    });
+    })
+</script>
 
 </html>
