@@ -11,7 +11,7 @@ function noCheckEl(el) {
 
 function formVerifText() {
 
-    var tx = PD(".j-readonly");
+    var tx = PD(".j-readonly"); 
     for (var i = 0; i < tx.length; i++) {
 
         var _ttx = tx.eq(i);
@@ -60,7 +60,7 @@ function msgRedInfoVa(tb,msg){
 
      var inp = _t.find(":radio,:checkbox");
      var inpLens = inp.length;
-
+ 
 
         if (inpLens > 0) {
 

@@ -1,6 +1,139 @@
-function formVerif() {
+PD(function() {
+
+    PD("#tbl_question_6").on("click", function() {
+
+        if (document.getElementById("option_6_512").checked) {
+            PD(".isshow-que").removeClass("isshow-que-hide");
+        } else {
+
+            PD(".isshow-que").addClass("isshow-que-hide");
+
+            PD(".isshow-que-hide").find('[type="text"]').removeClass("j-readonly");
+        }
+
+    });
+
+    PD(".wrongtip").text("");
+    PD(".many-check").on("click", function() {
+        var _t = PD(this),
+            _max = _t.attr("max") - 0;
+ 
+        _t.find('[type="checkbox"]').attr('disabled', true);
+        if (_t.find('[type="checkbox"]:checked').length >= _max) {
+            _t.find('[type="checkbox"]:checked').attr('disabled', false);
+            msgRedInfo(_t,'（多选，最多'+_max+'项）');
+        } else {
+            _t.find('[type="checkbox"]').attr('disabled', false);
+        }
+    });
+
+     PD(".m_table").on("click",":radio,:checkbox", function() {
+         var _t = PD(this);
+         var _tb = _t.parents("table");
+         var dt = _tb.find('[data-text="1"]:checked');
+         var text =  _tb.find('[type="text"]');
+         if(_tb.hasClass("isshow-que-hide")){
+             text.removeClass("j-readonly");
+         }else{
+             if(dt.length>0){
+                text.addClass("j-readonly");
+             }else{
+                text.removeClass("j-readonly");
+             }
+         }
+         
+    
+         var tb = _t.parents("table");
+         var msg = "（请选择您的答案）";
+         msgRedInfoVa(tb,msg)
+
+     })
+
+    
+
+
+
+})
+
+function noCheckEl(el) {
+  
+    if(el.prev().length>0){
+         PD("body,html").animate({
+        scrollTop: el.prev().offset().top - 90
+    }, 300)
+    }
+}
+
+
+function formVerifText() {
+
+    var tx = PD(".j-readonly");
+    for (var i = 0; i < tx.length; i++) {
+
+        var _ttx = tx.eq(i);
+
+        var _v = _ttx.val().trim();
+
+        if (_v.length < 2) {
+            _ttx.focus();
+            noCheckEl(_ttx.parents("table"));
+            msgRedInfo(_ttx.parents("table"),'（请补充您的答案）');
+           
+            return false
+        }
+
+    }
+
+    return true;
+}
+
+function formAll() {
+
+
+    if (formMsgRedInfo()) {
+
+        if (formVerifText()) {
+
+            return true;
+        }
+
+    }
+
+    return false;
+}
+
+// 消息提示文字
+function msgRedInfo(tb,msg){
+    var _t = tb;
+    var _p = _t.prev();
+    _p.find(".wrongtip").text(msg);
+}
+
+function msgRedInfoVa(tb,msg){
+    var _t = tb;
+    var _p = _t.prev();
+
+
+     var inp = _t.find(":radio,:checkbox");
+     var inpLens = inp.length;
+
+
+        if (inpLens > 0) {
+
+            if (_t.find(':checked').length < 1) {
+                _p.find(".wrongtip").text(msg);
+            }else{
+                _p.find(".wrongtip").text("");
+            }
+
+     }
+}
+
+function formMsgRedInfo(){
 
     var tb = PD(".m_table:not(.isshow-que-hide)");
+    var n = 0;
+    var indexT = [];
 
     for (var i = 0; i < tb.length; i++) {
         var _ttb = tb.eq(i);
@@ -11,66 +144,22 @@ function formVerif() {
         if (inpLens > 0) {
 
             if (_ttb.find(':checked').length < 1) {
-                noCheckEl(_ttb);
-                toastr.error('填写完整才有机会哦', '发现您还没选择哦!');
-                return false;
-
+                indexT.push(i);
+                msgRedInfo(_ttb,'（请选择您的答案）');
+                n ++;
             }
 
         }
 
     }
-    return true;
-}
+     noCheckEl(tb.eq(indexT[0]));
+    if(n > 0){
 
-function noCheckEl(el) {
-
-    PD("body,html").animate({
-        scrollTop: el.prev().offset().top - 90
-    }, 300)
-}
-
-
-function formVerifText() {
-
-    var tx = PD(".j-readonly");
-
-
-    for (var i = 0; i < tx.length; i++) {
-
-        var _ttx = tx.eq(i);
-
-        var _v = _ttx.val().trim();
-
-        if (_v.length < 2) {
-            _ttx.focus();
-            noCheckEl(_ttx.parents("table"))
-            toastr.error('填写完整才有机会哦', '好像还没有输入!')
-            return false
-        }
-
-
+        return false;
     }
+   
 
     return true;
-
-}
-
-function formAll() {
-
-
-    if (formVerif()) {
-
-        if (formVerifText()) {
-
-            return true;
-        }
-
-    }
-
-
-
-    return false;
 }
 (function(define) {
     define(['jquery'], function($) {
@@ -535,32 +624,3 @@ function formAll() {
         window.toastr = factory(window.jQuery);
     }
 }));
-PD(function() {
-
-    PD("#tbl_question_6").on("click", function() {
-
-        if (document.getElementById("option_6_512").checked) {
-            PD(".isshow-que").removeClass("isshow-que-hide");
-        } else {
-
-            PD(".isshow-que").addClass("isshow-que-hide");
-        }
-
-    });
-
-
-    PD(".many-check").on("click", function() {
-        var _t = PD(this),
-            _max = _t.attr("max") - 0;
-
-        _t.find('[type="checkbox"]').attr('disabled', true);
-        if (_t.find('[type="checkbox"]:checked').length >= _max) {
-            _t.find('[type="checkbox"]:checked').attr('disabled', false);
-        } else {
-            _t.find('[type="checkbox"]').attr('disabled', false);
-        }
-    });
-
-
-
-})
