@@ -16,7 +16,7 @@ function formVerifText() {
 
         var _ttx = tx.eq(i);
 
-        var _v = _ttx.val().trim();
+        var _v = PD.trim(_ttx.val());
 
         if (_v.length < 2) {
             _ttx.focus();
