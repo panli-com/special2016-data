@@ -16,7 +16,7 @@ PD(function() {
   
     PD(".many-check").on("click", function() {
         var _t = PD(this),
-            _max = _t.attr("max") - 0;
+            _max = _t.attr("max") - 0;  
  
         _t.find('[type="checkbox"]').attr('disabled', true);
         if (_t.find('[type="checkbox"]:checked').length >= _max) {
@@ -48,5 +48,6 @@ PD(function() {
          msgRedInfoVa(tb,msg)
 
      })
+
 
 })

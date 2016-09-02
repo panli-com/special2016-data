@@ -800,7 +800,8 @@ textarea[type="text"]:active {
   display: none !important;
 }
 
-.back_center .wrongtip {
+.back_center .wrongtip,
+.back_center .wrongtip-d {
   color: #fff441;
 }
 

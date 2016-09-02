@@ -2181,20 +2181,17 @@ PD(function() {
 
     });
 
-    PD(".wrongtip").text("");
+  
     PD(".many-check").on("click", function() {
         var _t = PD(this),
-            _max = _t.attr("max") - 0;
-
+            _max = _t.attr("max") - 0;  
+ 
         _t.find('[type="checkbox"]').attr('disabled', true);
         if (_t.find('[type="checkbox"]:checked').length >= _max) {
-            _t.find('[type="checkbox"]:checked').attr('disabled', false);
-             msgRedInfo(_t,'（多选，最多'+_max+'项）');
-           
+            _t.find('[type="checkbox"]:checked').attr('disabled', false); 
+         
         } else {
             _t.find('[type="checkbox"]').attr('disabled', false);
-           
-           
         }
     });
 
@@ -2220,14 +2217,11 @@ PD(function() {
 
      })
 
-    
-
-
 
 })
 
 function noCheckEl(el) {
-    console.log(el.prev().text());
+  
     if(el.prev().length>0){
          PD("body,html").animate({
         scrollTop: el.prev().offset().top - 90
@@ -2238,7 +2232,7 @@ function noCheckEl(el) {
 
 function formVerifText() {
 
-    var tx = PD(".j-readonly"); 
+    var tx = PD(".j-readonly");
     for (var i = 0; i < tx.length; i++) {
 
         var _ttx = tx.eq(i);
@@ -2277,7 +2271,14 @@ function formAll() {
 function msgRedInfo(tb,msg){
     var _t = tb;
     var _p = _t.prev();
-    _p.find(".wrongtip").text(msg);
+    var tip = _p.find(".wrongtip");
+    var txt = tip.attr("data-msg");
+    if(typeof(txt)=="undefined"){
+        tip.text(msg);
+    }else{
+        tip.text(txt);
+    }
+    
 }
 
 function msgRedInfoVa(tb,msg){
@@ -2287,7 +2288,7 @@ function msgRedInfoVa(tb,msg){
 
      var inp = _t.find(":radio,:checkbox");
      var inpLens = inp.length;
- 
+
 
         if (inpLens > 0) {
 

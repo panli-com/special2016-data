@@ -61,7 +61,7 @@ gulp.task('sass', () => gulp.src(`./${day}/src/scss/main.scss`)
     .pipe(notify({ message: 'Styles  task complete' })));
 
 
-// './libs/js/D.js','./libs/js/view-rem720.js'
+// './libs/js/D.js','./libs/js/view-rem720.js',
 
 gulp.task('scripts', () => gulp.src([`./${day}/src/js/*.js`])
     .pipe(concat(minjs))

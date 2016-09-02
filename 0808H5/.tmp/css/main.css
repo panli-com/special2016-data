@@ -656,7 +656,7 @@ textarea {
 .back_center .isshow-que-hide {
   display: none !important; }
 
-.back_center .wrongtip {
+.back_center .wrongtip, .back_center .wrongtip-d {
   color: #fff441; }
 
 .back_center input[type="text"] {
