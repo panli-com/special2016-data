@@ -50,7 +50,14 @@ function formAll() {
 function msgRedInfo(tb,msg){
     var _t = tb;
     var _p = _t.prev();
-    _p.find(".wrongtip").text(msg);
+    var tip = _p.find(".wrongtip");
+    var txt = tip.attr("data-msg");
+    if(typeof(txt)=="undefined"){
+        tip.text(msg);
+    }else{
+        tip.text(txt);
+    }
+    
 }
 
 function msgRedInfoVa(tb,msg){
