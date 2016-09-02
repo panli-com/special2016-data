@@ -20,7 +20,7 @@ PD(function() {
  
         _t.find('[type="checkbox"]').attr('disabled', true);
         if (_t.find('[type="checkbox"]:checked').length >= _max) {
-            _t.find('[type="checkbox"]:checked').attr('disabled', false);
+            _t.find('[type="checkbox"]:checked').attr('disabled', false); 
          
         } else {
             _t.find('[type="checkbox"]').attr('disabled', false);
@@ -48,9 +48,6 @@ PD(function() {
          msgRedInfoVa(tb,msg)
 
      })
-
-    
-
 
 
 })

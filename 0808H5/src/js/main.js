@@ -13,20 +13,17 @@ PD(function() {
 
     });
 
-    PD(".wrongtip").text("");
+  
     PD(".many-check").on("click", function() {
         var _t = PD(this),
             _max = _t.attr("max") - 0;
-
+ 
         _t.find('[type="checkbox"]').attr('disabled', true);
         if (_t.find('[type="checkbox"]:checked').length >= _max) {
-            _t.find('[type="checkbox"]:checked').attr('disabled', false);
-             msgRedInfo(_t,'（多选，最多'+_max+'项）');
-           
+            _t.find('[type="checkbox"]:checked').attr('disabled', false); 
+         
         } else {
             _t.find('[type="checkbox"]').attr('disabled', false);
-           
-           
         }
     });
 
@@ -51,9 +48,5 @@ PD(function() {
          msgRedInfoVa(tb,msg)
 
      })
-
-    
-
-
 
 })
