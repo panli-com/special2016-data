@@ -1,0 +1,34 @@
+{   
+    "start":"0808H5",
+    "0808H5": {
+        "title": "说出您的心声 - Panli代购",
+        "keywords":"Panli代购,代购,海外代购,华人代购,代购中国,淘宝代购,留学生代购",
+        "description":"说出您的心声：3分钟填问卷，赢取最高50元代金券~Panli网－全球最大的专业代购网络，为海外华人代购国内各种商品，方便您的购物需求",
+        "version":"0.0.2",
+        "author":"Julian",
+        "load": {
+            "css": ["./0808H5/src/scss/main.scss"],
+            "js": ["./libs/js/D.js","./libs/js/view-rem720.js","./libs/js/fastclick.js","./0808H5/src/js/*.js"]
+        },
+        "build":{
+            "css":"app.css",
+            "js":"app.js"
+        }
+    },
+    "0808": {
+        "title": "说出您的心声 3分钟填问卷 赢取最高50元代金券 - Panli代购",
+        "keywords":"Panli代购,代购,海外代购,华人代购,代购中国,淘宝代购,留学生代购",
+        "description":"说出您的心声：3分钟填问卷，赢取最高50元代金券~Panli网－全球最大的专业代购网络，为海外华人代购国内各种商品，方便您的购物需求",
+        "version":"0.0.2",
+        "author":"Julian",
+        "load": {
+            "css": ["./0808/src/scss/main.scss"],
+            "js": ["./0808/src/js/*.js"]
+        },
+        "build":{
+            "css":"app.css",
+            "js":"app.js"
+        }
+    }
+
+}

@@ -4,44 +4,77 @@
  * @ zanjser@163.com
  * 2016年07月28日13:39:38
  */
-import pkg from './package.json';
-import gulp from 'gulp';
-import sass from 'gulp-sass';
-import concat from 'gulp-concat';
-import minifycss from 'gulp-minify-css';
-import uglify from 'gulp-uglify';
-import rename from 'gulp-rename';
-import notify from 'gulp-notify';
-import imagemin from 'gulp-imagemin';
-import header from 'gulp-header';
+import pkg          from './package.json';
+import conf         from './config.json';
+import gulp         from 'gulp';
+import sass         from 'gulp-sass';
+import concat       from 'gulp-concat';
+import minifycss    from 'gulp-minify-css';
+import uglify       from 'gulp-uglify';
+import rename       from 'gulp-rename';
+import notify       from 'gulp-notify';
+import imagemin     from 'gulp-imagemin';
+import header       from 'gulp-header';
 import autoprefixer from 'gulp-autoprefixer';
-import px2rem from 'gulp-pxrem';
+import px2rem       from 'gulp-pxrem';
+
+
+const day           = conf.start;
+const title         = conf[day].title;
+const description   = conf[day].description;
+const keywords      = conf[day].keywords;
+const author        = conf[day].author;
+const version       = conf[day].version;
+const mincss        = conf[day].build.css;
+const minjs         = conf[day].build.js;
 
 
 
-const day = '0808H5',
-    mincss = 'app.css',
-    minjs = 'app.js';
+let cssLoadSrc = conf[day].load.css;
+let jsLoadSrc  = conf[day].load.js;
+let csssrc = `./${day}/src/scss/main.scss`;
+let jssrc = `./${day}/src/js/*.js`;
+
+
 
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
 const banner = [
-    '/*! ',
-    '<%= pkg.app %> ',
-    'v<%= pkg.version %> | ',
-    `(c) ${new Date()} <%= pkg.homepage %> |`,
-    ' <%= pkg.author %>',
-    ' */',
-    '\n'
+  '/*! ',
+    '<%= pkg.name %> ',
+    `v ${version}  | `,
+    `(c) ${new Date()}  ${author}  |`,
+    ' <%= pkg.homepage %> ',
+    ` ${title}`,
+  ' */',
+  '\n'
 ].join('');
 
+
+gulp.task('ejs', () => gulp.src(`./${day}/src/templates/*.ejs`)
+    .pipe(ejs({
+        title: title,
+        description: description,
+        keywords: keywords,
+        mincss: mincss,
+        minjs: minjs,
+        time: new Date().getTime()
+    }))
+    .pipe(gulp.dest(`./${day}/.__`))
+    .pipe(rename({extname: ".html"}))
+    .pipe(gulp.dest(`./${day}/`))
+    .pipe(reload({ stream: true }))
+    .pipe(notify({ message: 'ejs task complete' })));
+
+
+
 //编译Sass，Autoprefix及缩小化
-gulp.task('sass', () => gulp.src(`./${day}/src/scss/main.scss`)
+gulp.task('sass', () => gulp.src(cssLoadSrc)
     .pipe(sass({ style: 'expanded' }))
     .pipe(gulp.dest(`./${day}/.tmp/css`))
     .pipe(autoprefixer({
-        browsers: ['> 5%','Firefox <= 20',''],
+        browsers: ['> 1%','Firefox <= 20',''],
         cascade: false
     }))
     .pipe(px2rem({
@@ -61,9 +94,9 @@ gulp.task('sass', () => gulp.src(`./${day}/src/scss/main.scss`)
     .pipe(notify({ message: 'Styles  task complete' })));
 
 
-// './libs/js/D.js','./libs/js/view-rem720.js',
 
-gulp.task('scripts', () => gulp.src([`./${day}/src/js/*.js`])
+
+gulp.task('scripts', () => gulp.src(jsLoadSrc)
     .pipe(concat(minjs))
     .pipe(gulp.dest(`./${day}/.tmp/js`))
     .pipe(uglify())

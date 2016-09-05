@@ -1,5 +1,7 @@
 PD(function() {
 
+    FastClick.attach(document.body);
+
     PD("#tbl_question_6").on("click", function() {
 
         if (document.getElementById("option_6_512").checked) {
