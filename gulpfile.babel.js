@@ -77,13 +77,13 @@ gulp.task('sass', () => gulp.src(cssLoadSrc)
         browsers: ['> 1%','Firefox <= 20',''],
         cascade: false
     }))
-    // .pipe(px2rem({
-    //     baseDpr: 2, // base device pixel ratio (default: 2)
-    //     threeVersion: false, // whether to generate @1x, @2x and @3x version (default: false)
-    //     remVersion: true, // whether to generate rem version (default: true)
-    //     remUnit: 72, // rem unit value (default: 75)
-    //     remPrecision: 6
-    // }))
+    .pipe(px2rem({
+        baseDpr: 2, // base device pixel ratio (default: 2)
+        threeVersion: false, // whether to generate @1x, @2x and @3x version (default: false)
+        remVersion: true, // whether to generate rem version (default: true)
+        remUnit: 72, // rem unit value (default: 75)
+        remPrecision: 6
+    }))
     .pipe(rename(mincss))
     .pipe(gulp.dest(`./${day}/.tmp/`))
     .pipe(minifycss())

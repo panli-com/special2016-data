@@ -20,10 +20,24 @@ function formVerifText() {
 
         if (_v.length < 2) {
             _ttx.focus();
+           
             noCheckEl(_ttx.parents("table"));
             msgRedInfo(_ttx.parents("table"),'（请补充您的答案）');
+            isNumMsg('请填写完成哦');
+
            
             return false
+        }
+
+        var reg = /^\d+$/;
+           
+        if(_ttx.attr("data-n") == '1' &&  _v.match(reg)){
+               
+            _ttx.focus();
+           
+            noCheckEl(_ttx.parents("table"));
+            isNumMsg();
+            return false;
         }
 
     }

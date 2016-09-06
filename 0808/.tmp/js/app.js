@@ -51,6 +51,12 @@ PD(function() {
 
 
 })
+// 是数字消息通知
+function isNumMsg(msg){
+    var m = msg || '内容不可以是数字哦'; 
+    PL.msg(m, {time: 5000, icon:6}) ;
+}
+
 
 function noCheckEl(el) {
   
@@ -73,10 +79,24 @@ function formVerifText() {
 
         if (_v.length < 2) {
             _ttx.focus();
+           
             noCheckEl(_ttx.parents("table"));
             msgRedInfo(_ttx.parents("table"),'（请补充您的答案）');
+            isNumMsg('请填写完成哦');
+
            
             return false
+        }
+
+        var reg = /^\d+$/;
+           
+        if(_ttx.attr("data-n") == '1' &&  _v.match(reg)){
+               
+            _ttx.focus();
+           
+            noCheckEl(_ttx.parents("table"));
+            isNumMsg();
+            return false;
         }
 
     }
