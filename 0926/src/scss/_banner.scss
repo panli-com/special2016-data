@@ -1,0 +1,35 @@
+.sp-banner{
+    height: 644px;
+    background:#f63f66 url(../imgs/banner.png) no-repeat center top;
+}
+.sp-banner-content{
+    height: 644px;
+    background: url(../imgs/banner-bg.png) no-repeat center bottom;
+}
+.sp-banner-wp{
+    height: 644px;
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    .sp-banner-register{
+        position: absolute;
+        display: block;
+        width: 120px;
+        height: 120px;
+        // background: red; 
+        right: 68px; 
+        top: 139px;
+        text-decoration: none;
+    }
+    .sp-banner-more{
+        position: absolute;
+        display: block;
+        width: 220px; 
+        height: 70px;
+        left: 50%; 
+        top: 490px; 
+        margin-left: -110px;
+        text-decoration: none;
+        // background: red; 
+    }
+}
