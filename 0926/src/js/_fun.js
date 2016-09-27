@@ -14,31 +14,33 @@ var spPaging = {
     reader: function() {
         var vm = this;
         var pageCount = Math.ceil(vm.count / vm.pageNum);
-        var onPage = vm.on;
+        var onPage = Number(vm.on);
         var netxPage = onPage + 1;
         var prevPage = onPage - 1;
 
-        var prevStr = '<a href="" class="paging-a disban">上一页</a>';
-        var nextStr = '<a href="" class="paging-a disban">下一页</a>';
+        var prevStr = '<a href="javascript:void(0);" class="paging-a disban">上一页</a>';
+        var nextStr = '<a href="javascript:void(0);" class="paging-a disban">下一页</a>';
         var listn = '';
 
         var newObj = '';
 
         //上一页sdf
        if(onPage > 1){
-         newObj += '<a href="" class="paging-a" >上一页</a>';
+         newObj += '<a href="javascript:void(0);" data-id="'+ prevPage +'" class="paging-a" >上一页</a>';
        }
 
         //中间页码
        if(onPage != 1 && onPage >= 4 && pageCount != 4){
 
-         newObj +='<a href="" class="paging-a">'+1+'</a>';
+         newObj +='<a href="javascript:void(0);" data-id="1"  class="paging-a">'+1+'</a>';
 
        }
        if(onPage-2 > 2 && onPage <= pageCount && pageCount > 5){
          newObj +='<span>...</span>';
        }
        var start = onPage -2,end = onPage+2;
+       console.log(onPage -2)
+       console.log(onPage+2)
        if((start > 1 && onPage < 4)||onPage == 1){
          end++;
        }
@@ -49,10 +51,10 @@ var spPaging = {
          if(start <= pageCount && start >= 1){
            if(start != onPage){
 
-             newObj +='<a href="" class="paging-a">'+ start +'</a>';
+             newObj +='<a href="javascript:void(0);" data-id="'+ start +'"  class="paging-a">'+ start +'</a>';
 
            }else{
-             newObj +='<span class="paging-on">'+ start +'</span>';
+             newObj +='<a href="javascript:void(0);" data-id="'+ start +'" class="paging-on">'+ start +'</a>';
            }
          }
        }
@@ -61,14 +63,14 @@ var spPaging = {
        }
        if(onPage != pageCount && onPage < pageCount -2  && pageCount != 4){
 
-         newObj +='<a href="" class="paging-a">'+pageCount+'</a>';
+         newObj +='<a href="javascript:void(0);" data-id="'+ pageCount +'" class="paging-a">'+pageCount+'</a>';
 
        };
 
 
        //下一页
        if(onPage < pageCount){
-         newObj += '<a href="" class="paging-a">下一页</a>';
+         newObj += '<a href="javascript:void(0);" data-id="'+ netxPage +'" class="paging-a">下一页</a>';
        }
 
         var goS = '<span class="paging-txt">到第</span>' +
@@ -174,3 +176,12 @@ function loadingSwif(sta) {
     }
 }
 
+
+function offsetTopList(){
+
+    var _afloTop = PD(".sp-content-purple").offset().top;
+        PD('body,html').animate({
+            scrollTop: _afloTop - 110
+        }, 300);
+    return false;
+}

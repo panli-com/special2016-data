@@ -175,10 +175,35 @@
                 <div class="title-purple"></div>
                 <div class="sp-list-wrap">
                     <div class="data-loading">
-                        <div class='uil-squares-css' style='transform:scale(0.6);'><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>
+                        <div class='uil-squares-css' style='transform:scale(0.6);'>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                            <div>
+                                <div></div>
+                            </div>
+                        </div>
                     </div>
                     <ul id="sp-list-u">
-                        <li id="sp-list-1">       
+                        <li id="sp-list-1">
                         </li>
                         <li id="sp-list-2">
                         </li>
@@ -319,18 +344,33 @@
     <!--footere end-->
 </body>
 <script>
-    function getDataSP(pageNumber){
+    
+    function getDataSPost(onNumber) {
+        loadingSwif();
+        offsetTopList();
+        // int pageNow, int pageSize,string beginTime,string endTime, string PostContent
+        var data = {
+            pageNow:onNumber,
+            pageSize:8,
+            beginTime:"2016-9-1",
+            endTime:"2016-10-17",
+            PostContent:"我要爆料"
+        };
         PD.ajax({
-            type: "GET",
-            url: "/src/data/data.json",
-            dataType: "json",
+            type: "post",
+            url: "http://www.panli.com/App_Services/WsSocial.asmx/GetData",
+            data: data,
             success: function(result) {
+               
+                postList(result.data);
+                var obj = {
+                    count: 3318,
+                    on: onNumber,
+                    pageNum: 8,
+                }
+                spPaging.init(obj);
 
-                setTimeout(function(){
-                    postList(result.data);
-                },2000)
-                
-                console.log(JSON.stringify(result));
+                // console.log(JSON.stringify(result));
             },
             error: function(result, status) {
                 //处理错误
@@ -338,9 +378,9 @@
             }
         });
     }
+   
     PD(function() {
-
-        
+        getDataSPost(33);
     });
 </script>
 

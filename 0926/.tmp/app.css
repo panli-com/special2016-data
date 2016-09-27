@@ -283,39 +283,39 @@
 
 @-webkit-keyframes uilsquare {
   0% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   1% {
-    background-color: #255414; }
+    background-color: #371690; }
   11% {
-    background-color: #255414; }
+    background-color: #2a0d79; }
   21% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   100% {
-    background-color: #b2e1a1; } }
+    background-color: #49318a; } }
 
 @-moz-keyframes uilsquare {
   0% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   1% {
-    background-color: #255414; }
+    background-color: #371690; }
   11% {
-    background-color: #255414; }
+    background-color: #2a0d79; }
   21% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   100% {
-    background-color: #b2e1a1; } }
+    background-color: #49318a; } }
 
 @keyframes uilsquare {
   0% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   1% {
-    background-color: #255414; }
+    background-color: #371690; }
   11% {
-    background-color: #255414; }
+    background-color: #2a0d79; }
   21% {
-    background-color: #b2e1a1; }
+    background-color: #49318a; }
   100% {
-    background-color: #b2e1a1; } }
+    background-color: #49318a; } }
 
 .uil-squares-css {
   background: none;
@@ -328,7 +328,7 @@
   z-index: 1;
   width: 40px;
   height: 40px;
-  background-color: #b2e1a1; }
+  background-color: #49318a; }
 
 .uil-squares-css div > div {
   position: absolute;
