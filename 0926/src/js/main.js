@@ -25,15 +25,20 @@ PD(function() {
     PD("#sp-paging").on("click",".paging-a",function(){
         var _t = PD(this);
         var _onNum = _t.attr("data-id");
-        console.log(_onNum);
+      
         getDataSP(_onNum);
     });
 
     PD("#sp-paging").on("click",".paging-go",function(){
         var _input = PD(".paging-input");
-        var _onNum = _input.val();
-        
+        var _onNum = PD.trim(_input.val());
+        var maxnum = _input.attr("data-max") - 0;
+        if(!isNumber(_onNum) || _onNum > maxnum){ 
+            _input.val("");
+            return false;
+        };
         getDataSP(_onNum);
+        offsetTopList();
     })
 
 })

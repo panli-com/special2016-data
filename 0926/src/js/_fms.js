@@ -8,6 +8,10 @@ function isNumMsg(msg) {
 }
 
 function getDataSP(onNumber) {
+    if(isNaN(onNumber)){
+        return false;
+    };
+
     loadingSwif();
     offsetTopList();
     PD.ajax({
@@ -19,7 +23,7 @@ function getDataSP(onNumber) {
             setTimeout(function() {
                 postList(result.data);
                 var obj = {
-                    count: 3318,
+                    count: 441,
                     on: onNumber,
                     pageNum: 8,
                 }

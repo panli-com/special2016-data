@@ -347,7 +347,7 @@
     
     function getDataSPost(onNumber) {
         loadingSwif();
-        offsetTopList();
+       
         // int pageNow, int pageSize,string beginTime,string endTime, string PostContent
         var data = {
             pageNow:onNumber,
@@ -364,7 +364,7 @@
                
                 postList(result.data);
                 var obj = {
-                    count: 3318,
+                    count: 1,
                     on: onNumber,
                     pageNum: 8,
                 }
@@ -380,7 +380,7 @@
     }
    
     PD(function() {
-        getDataSPost(33);
+        getDataSP(33);
     });
 </script>
 

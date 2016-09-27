@@ -25,15 +25,20 @@ PD(function() {
     PD("#sp-paging").on("click",".paging-a",function(){
         var _t = PD(this);
         var _onNum = _t.attr("data-id");
-        console.log(_onNum);
+      
         getDataSP(_onNum);
     });
 
     PD("#sp-paging").on("click",".paging-go",function(){
         var _input = PD(".paging-input");
-        var _onNum = _input.val();
-        
+        var _onNum = PD.trim(_input.val());
+        var maxnum = _input.attr("data-max") - 0;
+        if(!isNumber(_onNum) || _onNum > maxnum){ 
+            _input.val("");
+            return false;
+        };
         getDataSP(_onNum);
+        offsetTopList();
     })
 
 })
@@ -47,6 +52,10 @@ function isNumMsg(msg) {
 }
 
 function getDataSP(onNumber) {
+    if(isNaN(onNumber)){
+        return false;
+    };
+
     loadingSwif();
     offsetTopList();
     PD.ajax({
@@ -58,7 +67,7 @@ function getDataSP(onNumber) {
             setTimeout(function() {
                 postList(result.data);
                 var obj = {
-                    count: 3318,
+                    count: 441,
                     on: onNumber,
                     pageNum: 8,
                 }
@@ -75,9 +84,11 @@ function getDataSP(onNumber) {
     });
 }
 var spPaging = {
-    count: 3318,
+    count: 1,
     on: 1,
+    start: 1,
     pageNum: 8,
+    maxNum: 1,
     init: function(obj) {
         var vm = this;
         if (obj) {
@@ -93,74 +104,73 @@ var spPaging = {
         var onPage = Number(vm.on);
         var netxPage = onPage + 1;
         var prevPage = onPage - 1;
-
-        var prevStr = '<a href="javascript:void(0);" class="paging-a disban">上一页</a>';
-        var nextStr = '<a href="javascript:void(0);" class="paging-a disban">下一页</a>';
+        vm.maxNum = pageCount;
+        vm.start = vm.start + 1;
         var listn = '';
 
         var newObj = '';
+        if (pageCount < 2) {
+            return false;
+        }
 
         //上一页sdf
-       if(onPage > 1){
-         newObj += '<a href="javascript:void(0);" data-id="'+ prevPage +'" class="paging-a" >上一页</a>';
-       }
+        if (onPage > 1) {
+            newObj += '<a href="javascript:void(0);" data-id="' + prevPage + '" class="paging-a" >上一页</a>';
+        }
+
 
         //中间页码
-       if(onPage != 1 && onPage >= 4 && pageCount != 4){
+        if (onPage != 1 && onPage >= 4 && pageCount != 4) {
 
-         newObj +='<a href="javascript:void(0);" data-id="1"  class="paging-a">'+1+'</a>';
+            newObj += '<a href="javascript:void(0);" data-id="1"  class="paging-a">' + 1 + '</a>';
 
-       }
-       if(onPage-2 > 2 && onPage <= pageCount && pageCount > 5){
-         newObj +='<span>...</span>';
-       }
-       var start = onPage -2,end = onPage+2;
-       console.log(onPage -2)
-       console.log(onPage+2)
-       if((start > 1 && onPage < 4)||onPage == 1){
-         end++;
-       }
-       if(onPage > pageCount-4 && onPage >= pageCount){
-         start--;
-       }
-       for (;start <= end; start++) {
-         if(start <= pageCount && start >= 1){
-           if(start != onPage){
+        }
+        if (onPage - 2 > 2 && onPage <= pageCount && pageCount > 5) {
+            newObj += '<span>...</span>';
+        }
+        var start = onPage - 2,
+            end = onPage + 2;
 
-             newObj +='<a href="javascript:void(0);" data-id="'+ start +'"  class="paging-a">'+ start +'</a>';
+        if ((start > 1 && onPage < 4) || onPage == 1) {
+            end++;
+        }
+        if (onPage > pageCount - 4 && onPage >= pageCount) {
+            start--;
+        }
+        for (; start <= end; start++) {
+            if (start <= pageCount && start >= 1) {
+                if (start != onPage) {
 
-           }else{
-             newObj +='<a href="javascript:void(0);" data-id="'+ start +'" class="paging-on">'+ start +'</a>';
-           }
-         }
-       }
-       if(onPage + 2 < pageCount - 1 && onPage >= 1 && pageCount > 5){
-         newObj +='<span>...</span>';
-       }
-       if(onPage != pageCount && onPage < pageCount -2  && pageCount != 4){
+                    newObj += '<a href="javascript:void(0);" data-id="' + start + '"  class="paging-a">' + start + '</a>';
 
-         newObj +='<a href="javascript:void(0);" data-id="'+ pageCount +'" class="paging-a">'+pageCount+'</a>';
+                } else {
+                    newObj += '<a href="javascript:void(0);" data-id="' + start + '" class="paging-on">' + start + '</a>';
+                }
+            }
+        }
+        if (onPage + 2 < pageCount - 1 && onPage >= 1 && pageCount > 5) {
+            newObj += '<span>...</span>';
+        }
+        if (onPage != pageCount && onPage < pageCount - 2 && pageCount != 4) {
 
-       };
+            newObj += '<a href="javascript:void(0);" data-id="' + pageCount + '" class="paging-a">' + pageCount + '</a>';
+
+        };
 
 
-       //下一页
-       if(onPage < pageCount){
-         newObj += '<a href="javascript:void(0);" data-id="'+ netxPage +'" class="paging-a">下一页</a>';
-       }
+        //下一页
+        if (onPage < pageCount) {
+            newObj += '<a href="javascript:void(0);" data-id="' + netxPage + '" class="paging-a">下一页</a>';
+        }
 
         var goS = '<span class="paging-txt">到第</span>' +
-            '<input type="text" class="paging-input">' +
+            '<input type="text" class="paging-input" data-max="' + pageCount + '" >' +
             '<span class="paging-txt">页</span>' +
             '<a href="javascript:void(0);" class="paging-go">GO</a>';
 
-        var pagingCs = prevStr + listn + nextStr +goS;
 
-        PD("#sp-paging").html(newObj  + goS);
+        PD("#sp-paging").html(newObj + goS);
 
-        console.log(listn);
-        console.log(vm);
-        console.log(pageCount);
     }
 }
 
@@ -214,7 +224,8 @@ function listHtmlReader(obj) {
         title = obj.title,
         userName = obj.userName,
         desction = obj.desction,
-        shopUrl = obj.shopUrl;
+        shopUrl = encodeURI(obj.shopUrl),
+        panliUrl = 'http://www.panli.com/Crawler.aspx?purl=' + encodeURIComponent(shopUrl);
 
     var str = '<div class="sp-list-grid">' +
         '<div class="thumb">' +
@@ -232,7 +243,7 @@ function listHtmlReader(obj) {
         '</p>' +
         '</div>' +
         '<div class="pro-go-btn">' +
-        '<a href="" target="_blank">' +
+        '<a href="' + panliUrl + '" target="_blank">' +
         '我要代购' +
         '</a>' +
         '</div>' +
@@ -253,11 +264,23 @@ function loadingSwif(sta) {
 }
 
 
-function offsetTopList(){
-
-    var _afloTop = PD(".sp-content-purple").offset().top;
+function offsetTopList() {
+   
+    if (spPaging.start > 1) {
+        var _afloTop = PD(".sp-content-purple").offset().top;
         PD('body,html').animate({
-            scrollTop: _afloTop - 110
-        }, 300);
+            scrollTop: _afloTop - 80
+        }, 800);
+    }
+
+
     return false;
+}
+
+function isNumber(num) {
+    var reg = new RegExp("^[1-9]*$");
+    if (!reg.test(num)) {
+        return false;
+    }
+    return num;
 }
