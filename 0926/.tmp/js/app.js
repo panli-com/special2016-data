@@ -192,6 +192,9 @@ function floorNnav() {
 }
 
 function postList(data) {
+    if(!data.length){
+        return false;
+    }
     loadingSwif(false);
     var leng = data.length;
     var a1 = '';
@@ -234,7 +237,7 @@ function listHtmlReader(obj) {
         '</a>' +
         '</div>' +
         '<div class="sp-pro-content">' +
-        '<a  rel="nofollow" href="' + shopUrl + '" class="pro-title" title="' + title + '" >' + title +
+        '<a target="_blank"  rel="nofollow" href="' + shopUrl + '" class="pro-title" title="' + title + '" >' + title +
         '</a>' +
         '<div class="pro-line"></div>' +
         '<div class="pro-user-name">爆料人：' + userName + '</div>' +
