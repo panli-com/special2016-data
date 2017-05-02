@@ -163,7 +163,7 @@
     <div class="sp-banner">
       <div class="sp-banner-content">
         <div class="sp-banner-wp">
-          <a href="http://passport.panli.com/Register/" class="sp-banner-register"></a>
+          <a href="http://passport.panli.com/Register/" target="_blank" class="sp-banner-register"></a>
           <a href="javascript:void(0);" class="sp-banner-more sp-go-baoliao"></a>
         </div>
       </div>
@@ -355,7 +355,6 @@
       url: "build/data/data.json",
       dataType: "json",
       success: function(result) {
-
         setTimeout(function() {
           postList(result.data);
           var obj = {
@@ -366,12 +365,9 @@
           spPaging.init(obj);
 
         }, 1000)
-
-        // console.log(JSON.stringify(result));
       },
       error: function(result, status) {
         //处理错误
-        console.log(result);
       }
     });
   }
@@ -400,8 +396,6 @@
           pageNum: 8,
         }
         spPaging.init(obj);
-
-        // console.log(JSON.stringify(result));
       },
       error: function(result, status) {
         //处理错误
