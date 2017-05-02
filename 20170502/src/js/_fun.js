@@ -146,7 +146,7 @@ function postList(data) {
 }
 
 function listHtmlReader(obj) {
-  var thumb = obj.thumb ? encodeURI(obj.thumb) : '//sf.panli.com/Ued/Special/2016/0927/build/imgs/thumb-no.png',
+  var thumb = obj.thumb ? encodeURI(obj.thumb) : '//sf.panli.com/Ued/Special/2017/0502/build/imgs/thumb-no.png',
     title = obj.title ? obj.title : "不想写",
     userName = obj.userName,
     desction = obj.desction,
