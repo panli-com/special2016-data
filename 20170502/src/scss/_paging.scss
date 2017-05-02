@@ -1,0 +1,54 @@
+.sp-paging{
+    position: relative;
+    text-align: center;
+    padding-bottom: 50px;
+    font-size: 14px;
+    a,span{
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        height: 30px;
+        line-height: 30px;
+        margin: 0 3px;
+    }
+    .paging-a{
+        padding: 0 10px;
+        border: 1px solid #FFF;
+        &:hover{
+            color: #ffd260;
+            border-color: #ffd260;
+        }
+        &.disban{
+            background: #674db0;
+            &:hover{
+                color: #FFF;
+                border-color: #FFF;
+            }
+        }
+    }
+    .paging-on{
+        padding: 0 10px;
+        border: 1px solid #FFF;
+         color: #ffd260;
+            border-color: #ffd260;
+    }
+    .paging-input{
+        display: inline-block;
+        height: 28px;
+        line-height: 30px;
+        border: 1px solid #FFF;
+        color: #FFF;
+        text-indent: 2px;
+        width: 34px;
+        background-color: transparent;
+        margin-right: 5px;
+    }
+    .paging-go{
+        border-radius: 50%;
+        width: 30px;
+        background: #ff4163;
+        &:hover{
+            opacity: .9;
+        }
+    }
+}

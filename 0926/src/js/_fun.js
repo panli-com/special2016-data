@@ -107,43 +107,57 @@ function floorNnav() {
 }
 
 function postList(data) {
-    if(!data.length){
+    if (!data.length) {
+        errorDataInfo("数据返回错误");
         return false;
     }
-    loadingSwif(false);
-    var leng = data.length;
-    var a1 = '';
-    var a2 = '';
-    var a3 = '';
-    var a4 = '';
 
-    for (var i = 0; i < leng; i++) {
-        var ind = i % 4;
-        if (ind == 0) {
-            a1 += listHtmlReader(data[i]);
-        } else if (ind == 1) {
-            a2 += listHtmlReader(data[i]);
-        } else if (ind == 2) {
-            a3 += listHtmlReader(data[i]);
-        } else if (ind == 3) {
-            a4 += listHtmlReader(data[i]);
-        }
-    };
+    try {
+        loadingSwif(false);
+        var leng = data.length;
+        var a1 = '';
+        var a2 = '';
+        var a3 = '';
+        var a4 = '';
 
-    PD("#sp-list-1").html(a1);
-    PD("#sp-list-2").html(a2);
-    PD("#sp-list-3").html(a3);
-    PD("#sp-list-4").html(a4);
+        for (var i = 0; i < leng; i++) {
+            var ind = i % 4;
+            if (ind == 0) {
+                a1 += listHtmlReader(data[i]);
+            } else if (ind == 1) {
+                a2 += listHtmlReader(data[i]);
+            } else if (ind == 2) {
+                a3 += listHtmlReader(data[i]);
+            } else if (ind == 3) {
+                a4 += listHtmlReader(data[i]);
+            }
+        };
+
+        PD("#sp-list-1").html(a1);
+        PD("#sp-list-2").html(a2);
+        PD("#sp-list-3").html(a3);
+        PD("#sp-list-4").html(a4);
+
+    } catch (error) {
+        errorDataInfo("数据返回错误");
+    }
+
 
 }
 
 function listHtmlReader(obj) {
-    var thumb = obj.thumb ? encodeURI(obj.thumb) : './build/imgs/thumb-no.png',
-        title = obj.title,
+    var thumb = obj.thumb ? encodeURI(obj.thumb) : '//sf.panli.com/Ued/Special/2016/0927/build/imgs/thumb-no.png',
+        title = obj.title ? obj.title :"不想写",
         userName = obj.userName,
         desction = obj.desction,
-        shopUrl = encodeURI(obj.shopUrl),
-        panliUrl = 'http://www.panli.com/Crawler.aspx?purl=' + encodeURIComponent(shopUrl);
+        shopUrl = obj.shopUrl ? encodeURI(obj.shopUrl) : "javascript:void(0);",
+        panliUrl = obj.shopUrl ? 'http://www.panli.com/Crawler.aspx?purl=' + encodeURIComponent(shopUrl) : "javascript:void(0);";
+
+    var gobuySDf = '<div class="pro-go-btn">' +
+        '<a href="' + panliUrl + '" target="_blank">' +
+        '我要代购</a>';
+
+    var gobuyS = obj.shopUrl ? gobuySDf :"";
 
     var str = '<div class="sp-list-grid">' +
         '<div class="thumb">' +
@@ -159,11 +173,7 @@ function listHtmlReader(obj) {
         '<div class="pro-desction">' +
         '<p>' + desction +
         '</p>' +
-        '</div>' +
-        '<div class="pro-go-btn">' +
-        '<a href="' + panliUrl + '" target="_blank">' +
-        '我要代购' +
-        '</a>' +
+        '</div>' + gobuyS +
         '</div>' +
         '</div>' +
         '</div>';
@@ -183,7 +193,7 @@ function loadingSwif(sta) {
 
 
 function offsetTopList() {
-   
+
     if (spPaging.start > 1) {
         var _afloTop = PD(".sp-content-purple").offset().top;
         PD('body,html').animate({
@@ -196,9 +206,29 @@ function offsetTopList() {
 }
 
 function isNumber(num) {
-    var reg = new RegExp("^[1-9]*$");
-    if (!reg.test(num)) {
+    var reg = new RegExp("^[0-9]*$");
+    if (!reg.test(num) || num < 1) {
         return false;
     }
     return num;
+}
+
+function gotoList() {
+    var _input = PD(".paging-input");
+    var _onNum = PD.trim(_input.val());
+    var maxnum = _input.attr("data-max") - 0;
+    if (!isNumber(_onNum) || _onNum >= maxnum + 1) {
+        _input.val("");
+        return false;
+    };
+    getDataSPost(_onNum);
+    offsetTopList();
+}
+
+function errorDataInfo(info) {
+    var msg = info ? info : "好可惜,数据去哪儿了 ┭┮﹏┭┮";
+    loadingSwif(false);
+    PD("#sp-list-u li").html("");
+    var str = '<div class="error-info">' + msg + '</div>';
+    PD("#sp-list-1").html(str);
 }

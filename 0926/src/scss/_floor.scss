@@ -50,6 +50,7 @@
         width: 240px;
         float: left;
         margin: 5px;
+        overflow: hidden;
        
     }
     .sp-list-grid{
@@ -88,27 +89,33 @@
         height: 20px;
         line-height: 20px;
         overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        display: -o-box;
-        -o-line-clamp: 1;
-        -o-box-orient: vertical;
-        display: -ms-box;
-        -ms-line-clamp: 1;
-        -ms-box-orient: vertical;
-        display: -ms-box;
-        -ms-line-clamp: 1;
-        -ms-box-orient: vertical;
-        -ms-line-clamp: 1;
-        line-clamp: 1;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
+        text-decoration: none;
+        white-space: nowrap;
+        -o-white-space: nowrap;
+        -webkit-white-space: nowrap;
+        -ms-white-space: nowrap;
+        
+        // display: -webkit-box;
+        // -webkit-line-clamp: 1;
+        // -webkit-box-orient: vertical;
+        // display: -o-box;
+        // -o-line-clamp: 1;
+        // -o-box-orient: vertical;
+        // display: -ms-box;
+        // -ms-line-clamp: 1;
+        // -ms-box-orient: vertical;
+        // display: -ms-box;
+        // -ms-line-clamp: 1;
+        // -ms-box-orient: vertical;
+        // -ms-line-clamp: 1;
+        // line-clamp: 1;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         -o-text-overflow: ellipsis;
         -ms-text-overflow: ellipsis;
         -webkit-text-overflow: ellipsis;
-        text-decoration: none;
+        // text-decoration: none;
     }
     .pro-line {
         height: 8px;
@@ -122,6 +129,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
         color: #555;
+        word-wrap:break-word;
     }
     .pro-go-btn {
         text-align: center;
@@ -147,7 +155,7 @@
                 content: '';
                 width: 20px;
                 height: 20px;
-                background: #574193;
+                background: #fb506f;
                 border-radius: 50%; 
             }
             &:before {
@@ -381,4 +389,9 @@
   -webkit-animation-delay: 0.875s;
   -o-animation-delay: 0.875s;
   animation-delay: 0.875s;
+}
+
+.error-info{
+  color: #FFF;
+  text-align: center; 
 }

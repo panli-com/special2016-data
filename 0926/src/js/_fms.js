@@ -6,36 +6,3 @@ function isNumMsg(msg) {
         icon: 6
     });
 }
-
-function getDataSP(onNumber) {
-    if(isNaN(onNumber)){
-        return false;
-    };
-
-    loadingSwif();
-    offsetTopList();
-    PD.ajax({
-        type: "GET",
-        url: "/src/data/data.json",
-        dataType: "json",
-        success: function(result) {
-
-            setTimeout(function() {
-                postList(result.data);
-                var obj = {
-                    count: 441,
-                    on: onNumber,
-                    pageNum: 8,
-                }
-                spPaging.init(obj);
-
-            }, 1000)
-
-            // console.log(JSON.stringify(result));
-        },
-        error: function(result, status) {
-            //处理错误
-            console.log(result);
-        }
-    });
-}

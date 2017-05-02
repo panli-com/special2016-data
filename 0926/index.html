@@ -345,7 +345,39 @@
 </body>
 <script>
     
-    function getDataSPost(onNumber) {
+function getDataSPost(onNumber) {
+    if(isNaN(onNumber)){
+        return false;
+    };
+
+    loadingSwif();
+    offsetTopList();
+    PD.ajax({
+        type: "GET",
+        url: "build/data/data.json",
+        dataType: "json",
+        success: function(result) {
+
+            setTimeout(function() {
+                postList(result.data);
+                var obj = {
+                    count: 441,
+                    on: onNumber,
+                    pageNum: 8,
+                }
+                spPaging.init(obj);
+
+            }, 1000)
+
+            // console.log(JSON.stringify(result));
+        },
+        error: function(result, status) {
+            //处理错误
+            console.log(result);
+        }
+    });
+}
+    function getDataSPostP(onNumber) {
         loadingSwif();
        
         // int pageNow, int pageSize,string beginTime,string endTime, string PostContent
@@ -374,13 +406,14 @@
             },
             error: function(result, status) {
                 //处理错误
+                errorDataInfo("获取数据错误")
                 console.log(result);
             }
         });
     }
    
     PD(function() {
-        getDataSP(33);
+        getDataSPost(1);
     });
 </script>
 

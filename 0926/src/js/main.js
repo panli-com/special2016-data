@@ -21,24 +21,21 @@ PD(function() {
         return false;
     });
 
+    PD('#sp-paging').on('keypress',".paging-input",function(event){
+            if(event.keyCode == "13")    
+            {
+                gotoList();
+            }
+    });
 
     PD("#sp-paging").on("click",".paging-a",function(){
         var _t = PD(this);
-        var _onNum = _t.attr("data-id");
-      
-        getDataSP(_onNum);
+        var _onNum = _t.attr("data-id"); 
+        getDataSPost(_onNum);
     });
 
     PD("#sp-paging").on("click",".paging-go",function(){
-        var _input = PD(".paging-input");
-        var _onNum = PD.trim(_input.val());
-        var maxnum = _input.attr("data-max") - 0;
-        if(!isNumber(_onNum) || _onNum > maxnum){ 
-            _input.val("");
-            return false;
-        };
-        getDataSP(_onNum);
-        offsetTopList();
+        gotoList();
     })
 
 })
